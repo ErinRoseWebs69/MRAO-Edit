@@ -1,0 +1,159 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0b2ws1p3q278"]
+
+[ext_resource type="Script" path="res://scripts/system.gd" id="1_aoof2"]
+[ext_resource type="Texture2D" uid="uid://cnd20y0bfksus" path="res://missing.png" id="1_y0a7m"]
+
+[node name="MRAO Window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_aoof2")
+
+[node name="SaveFileDialouge" type="NativeFileDialog" parent="."]
+title = "Save As..."
+access = 2
+root_subfolder = "C:/"
+filters = PackedStringArray("*.png ; Portable Network Graphic", "*.tga ; Targa")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Splitter" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureList" type="MarginContainer" parent="Panel/Splitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MapSplitter" type="VBoxContainer" parent="Panel/Splitter/TextureList"]
+layout_mode = 2
+
+[node name="MetallicLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Metallic Map:"
+
+[node name="Metallic" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MetallicTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/Metallic"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter/Metallic"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Metallic Path"
+
+[node name="RoughnessLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Roughness Map:"
+
+[node name="Roughness" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RoughnessTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/Roughness"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter/Roughness"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Roughness Path"
+
+[node name="AOLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ambient Occlusion Map:"
+
+[node name="AO" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AOTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/AO"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter/AO"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AO Path"
+
+[node name="Settings" type="MarginContainer" parent="Panel/Splitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsSplitter" type="VBoxContainer" parent="Panel/Splitter/Settings"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings:"
+
+[node name="SmoothnessCheckbox" type="CheckBox" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+text = "Roughness Map is Smoothness Map"
+
+[node name="ExportButton" type="Button" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+text = "Export MRAO Map"
+
+[node name="PreviewLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Preview:"
+
+[node name="MRAOPreview" type="TextureRect" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UpdatePreview" type="Button" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+text = "Update Preview"
+
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/ExportButton" to="." method="_on_export_button_pressed"]
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/UpdatePreview" to="." method="_on_update_preview_pressed"]

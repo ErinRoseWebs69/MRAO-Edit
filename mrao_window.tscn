@@ -1,0 +1,232 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0b2ws1p3q278"]
+
+[ext_resource type="Script" path="res://scripts/system.gd" id="1_aoof2"]
+[ext_resource type="Texture2D" uid="uid://cnd20y0bfksus" path="res://missing.png" id="1_y0a7m"]
+[ext_resource type="ButtonGroup" uid="uid://caoelwkg5xk4u" path="res://new_button_group.tres" id="3_8fwal"]
+
+[node name="MRAO Window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_aoof2")
+
+[node name="LoadFileDialogue" type="NativeFileDialog" parent="."]
+title = "Open a File"
+file_mode = 0
+access = 2
+root_subfolder = "C:/"
+
+[node name="SaveDirectoryDialogue" type="NativeFileDialog" parent="."]
+title = "Open a Directory"
+file_mode = 2
+access = 2
+root_subfolder = "C:/"
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 600)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Splitter" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureList" type="MarginContainer" parent="Panel/Splitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MapSplitter" type="VBoxContainer" parent="Panel/Splitter/TextureList"]
+layout_mode = 2
+
+[node name="MetallicLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Metallic Map:"
+
+[node name="Metallic" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MetallicTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/Metallic"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathButton" type="Button" parent="Panel/Splitter/TextureList/MapSplitter/Metallic"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Open File"
+text_overrun_behavior = 3
+text_direction = 2
+
+[node name="RoughnessLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Roughness Map:"
+
+[node name="Roughness" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RoughnessTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/Roughness"]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "If you have a Smoothness map instead of Roughness, invert colors of Smoothness map."
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathButton2" type="Button" parent="Panel/Splitter/TextureList/MapSplitter/Roughness"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Open File"
+text_overrun_behavior = 3
+text_direction = 2
+
+[node name="AOLabel" type="Label" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Ambient Occlusion Map:"
+
+[node name="AO" type="HBoxContainer" parent="Panel/Splitter/TextureList/MapSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AOTexture" type="TextureRect" parent="Panel/Splitter/TextureList/MapSplitter/AO"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PathButton3" type="Button" parent="Panel/Splitter/TextureList/MapSplitter/AO"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Open File"
+text_overrun_behavior = 3
+text_direction = 2
+
+[node name="Settings" type="MarginContainer" parent="Panel/Splitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="SettingsSplitter" type="VBoxContainer" parent="Panel/Splitter/Settings"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings:"
+
+[node name="FilePath" type="HBoxContainer" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PathLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter/FilePath"]
+layout_mode = 2
+text = "File Path:   "
+
+[node name="PathButton" type="Button" parent="Panel/Splitter/Settings/SettingsSplitter/FilePath"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Select Export Folder..."
+alignment = 0
+text_overrun_behavior = 3
+
+[node name="FileName" type="HBoxContainer" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PathLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter/FileName"]
+layout_mode = 2
+text = "File Name:   "
+
+[node name="TextEdit" type="TextEdit" parent="Panel/Splitter/Settings/SettingsSplitter/FileName"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+placeholder_text = "Texture Name (no extensions)"
+scroll_fit_content_height = true
+
+[node name="FileType" type="HBoxContainer" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FileLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter/FileType"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "File Type: 
+"
+
+[node name="PNG" type="CheckButton" parent="Panel/Splitter/Settings/SettingsSplitter/FileType"]
+layout_mode = 2
+size_flags_horizontal = 3
+button_pressed = true
+keep_pressed_outside = true
+button_group = ExtResource("3_8fwal")
+text = ".png"
+
+[node name="TGA" type="CheckButton" parent="Panel/Splitter/Settings/SettingsSplitter/FileType"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+keep_pressed_outside = true
+button_group = ExtResource("3_8fwal")
+text = ".tga"
+
+[node name="ExportButton" type="Button" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+text = "Export MRAO Map"
+
+[node name="PreviewLabel" type="Label" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Preview:"
+
+[node name="MRAOPreview" type="TextureRect" parent="Panel/Splitter/Settings/SettingsSplitter"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("1_y0a7m")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="file_selected" from="LoadFileDialogue" to="." method="_on_load_file_dialogue_file_selected"]
+[connection signal="dir_selected" from="SaveDirectoryDialogue" to="." method="_on_save_file_dialouge_dir_selected"]
+[connection signal="pressed" from="Panel/Splitter/TextureList/MapSplitter/Metallic/PathButton" to="." method="_on_metal_path_button_pressed"]
+[connection signal="pressed" from="Panel/Splitter/TextureList/MapSplitter/Roughness/PathButton2" to="." method="_on_path_button_2_pressed"]
+[connection signal="pressed" from="Panel/Splitter/TextureList/MapSplitter/AO/PathButton3" to="." method="_on_path_button_3_pressed"]
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/FilePath/PathButton" to="." method="_on_path_button_pressed"]
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/FileType/PNG" to="." method="_on_png_pressed"]
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/FileType/TGA" to="." method="_on_tga_pressed"]
+[connection signal="pressed" from="Panel/Splitter/Settings/SettingsSplitter/ExportButton" to="." method="_on_export_button_pressed"]
